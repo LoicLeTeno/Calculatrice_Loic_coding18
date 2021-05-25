@@ -1,2 +1,1 @@
-import './modules/muscle.js'
-import './modules/style'
+import './modules/style.js'

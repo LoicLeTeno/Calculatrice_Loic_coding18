@@ -1,0 +1,50 @@
+#corps {
+    background-color: rgb(104, 102, 102);
+    text-align: center;
+
+    border: rgb(104, 102, 102) solid 30px;
+
+    width: 450px;
+
+    margin: 20% auto 20%;
+}
+
+#tete {
+    font-size: 50px;
+    text-align: end;
+
+    height: 80px;
+    width: 94%;
+
+    margin-bottom: 20px;
+}
+
+
+#intern {
+    width: 100%;
+}
+
+
+/* BUTTONS */
+button {
+    font-size: 30px;
+    
+    width: 100px;
+    height: 80px;
+
+    margin: 5px;
+}
+
+
+button:nth-of-type(-1n +4) {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+button:nth-of-type(15) {
+    background-color: green;
+    color: white;
+}
+button:last-of-type {
+    color: white;
+    background-color: red;
+}
