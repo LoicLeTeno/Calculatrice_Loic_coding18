@@ -24,15 +24,71 @@ let array_button = ["+", "-", "x", "/", "1", "2", "3", "4", "5", "6", "7", "8", 
 let compt = 0;
 
 array_button.forEach(e => {
-  let button = document.createElement('button');
-  button.innerHTML = e;
-  div_2_intern.appendChild(button)
+    let button = document.createElement('button');
+    button.innerHTML = e;
+    div_2_intern.appendChild(button)
 });
 
 
 // MUSCLE
-body.addEventListener('click', (e) => {
-  console.log(e.target.innerHTML);
+let number_1 = "";
+let operator = "";
+let number_2 = ""; 
+let re_compt = 0;
 
-  
+body.addEventListener('click', (e) => {
+
+    if (number_1 != "" && number_2 != "" && operator != "" && e.target.innerHTML == "=") {
+        input_tete.value = "";
+
+        switch (operator) {
+            case "+":
+                input_tete.value = parseInt(number_1) + parseInt(number_2);
+                break;
+
+            case "-":
+                input_tete.value = parseInt(number_1) - parseInt(number_2);
+                break;
+
+            case "x":
+                input_tete.value = parseInt(number_1) * parseInt(number_2);
+                break
+
+            default:
+                input_tete.value = parseInt(number_1) / parseInt(number_2);
+                break;
+        }
+
+    } else if (e.target.innerHTML == "C") {
+        number_1 = "";
+        operator = "";
+        number_2 = ""; 
+
+        input_tete.value = "";
+
+    } else if (number_1 != "" && operator != ""){
+
+        while (re_compt < 1) {
+            input_tete.value = "";
+
+            re_compt = re_compt + 1
+            console.log(re_compt);
+        }
+
+        input_tete.value += e.target.innerHTML;
+        number_2 = input_tete.value;
+        console.log(number_2);
+
+    } else if (number_1 != "" && (e.target.innerHTML == "+" || e.target.innerHTML == "-" || e.target.innerHTML == "x" || e.target.innerHTML == "/") ) {
+        input_tete.value = "";
+        input_tete.value += e.target.innerHTML;
+        operator = input_tete.value;
+        console.log(operator);
+
+    } else {
+        input_tete.value += e.target.innerHTML;
+        number_1 = input_tete.value;
+
+    }        
+        console.log(number_1);
 });
