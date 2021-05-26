@@ -20,7 +20,7 @@ div_2_intern.id = "intern";
 div_1.appendChild(div_2_intern);
 
 // BUTTON
-let array_button = ["+", "-", "x", "/", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "=", "C"];
+let array_button = ["+", "-", "x", "/", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", "=", "C"];
 let compt = 0;
 
 array_button.forEach(e => {
@@ -72,25 +72,21 @@ body.addEventListener('click', (e) => {
             input_tete.value = "";
 
             re_compt = re_compt + 1
-            console.log(re_compt);
         }
 
         input_tete.value += e.target.innerHTML;
         number_2 = input_tete.value;
-        console.log(number_2);
 
     } else if (number_1 != "" && (e.target.innerHTML == "+" || e.target.innerHTML == "-" || e.target.innerHTML == "x" || e.target.innerHTML == "/") ) {
         input_tete.value = "";
         input_tete.value += e.target.innerHTML;
         operator = input_tete.value;
-        console.log(operator);
 
-    } else {
+    } else{
         input_tete.value += e.target.innerHTML;
         number_1 = input_tete.value;
 
     }        
-        console.log(number_1);
 });
 
 
