@@ -43,19 +43,19 @@ body.addEventListener('click', (e) => {
 
         switch (operator) {
             case "+":
-                input_tete.value = parseInt(number_1) + parseInt(number_2);
+                input_tete.value = parseFloat(number_1) + parseFloat(number_2);
                 break;
 
             case "-":
-                input_tete.value = parseInt(number_1) - parseInt(number_2);
+                input_tete.value = parseFloat(number_1) - parseFloat(number_2);
                 break;
 
             case "x":
-                input_tete.value = parseInt(number_1) * parseInt(number_2);
+                input_tete.value = parseFloat(number_1) * parseFloat(number_2);
                 break
 
             default:
-                input_tete.value = parseInt(number_1) / parseInt(number_2);
+                input_tete.value = parseFloat(number_1) / parseFloat(number_2);
                 break;
         }
 
@@ -87,6 +87,64 @@ body.addEventListener('click', (e) => {
 
     } else {
         input_tete.value += e.target.innerHTML;
+        number_1 = input_tete.value;
+
+    }        
+        console.log(number_1);
+});
+
+
+// KEY
+window.addEventListener('keydown', (e) => {
+    if (number_1 != "" && number_2 != "" && operator != "" && e.key == "=") {
+        input_tete.value = "";
+
+        switch (operator) {
+            case "+":
+                input_tete.value = parseFloat(number_1) + parseFloat(number_2);
+                break;
+
+            case "-":
+                input_tete.value = parseFloat(number_1) - parseFloat(number_2);
+                break;
+
+            case "x":
+                input_tete.value = parseFloat(number_1) * parseFloat(number_2);
+                break
+
+            default:
+                input_tete.value = parseFloat(number_1) / parseFloat(number_2);
+                break;
+        }
+
+    } else if (e.key == "C") {
+        number_1 = "";
+        operator = "";
+        number_2 = ""; 
+
+        input_tete.value = "";
+
+    } else if (number_1 != "" && operator != ""){
+
+        while (re_compt < 1) {
+            input_tete.value = "";
+
+            re_compt = re_compt + 1
+            console.log(re_compt);
+        }
+
+        input_tete.value += e.key;
+        number_2 = input_tete.value;
+        console.log(number_2);
+
+    } else if (number_1 != "" && (e.key == "+" || e.key == "-" || e.key== "x" || e.key== "/") ) {
+        input_tete.value = "";
+        input_tete.value += e.key;
+        operator = input_tete.value;
+        console.log(operator);
+
+    } else {
+        input_tete.value += e.key;
         number_1 = input_tete.value;
 
     }        
