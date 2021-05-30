@@ -34,63 +34,72 @@ array_button.forEach(e => {
 let number_1 = "";
 let operator = "";
 let number_2 = ""; 
+let buttons = Array.from(document.querySelectorAll('button'));
 let re_compt = 0;
 
-body.addEventListener('click', (e) => {
-
-    if (number_1 != "" && number_2 != "" && operator != "" && e.target.innerHTML == "=") {
-        input_tete.value = "";
-
-        switch (operator) {
-            case "+":
-                input_tete.value = parseFloat(number_1) + parseFloat(number_2);
-                break;
-
-            case "-":
-                input_tete.value = parseFloat(number_1) - parseFloat(number_2);
-                break;
-
-            case "x":
-                input_tete.value = parseFloat(number_1) * parseFloat(number_2);
-                break
-
-            default:
-                input_tete.value = parseFloat(number_1) / parseFloat(number_2);
-                break;
-        }
-
-    } else if (e.target.innerHTML == "C") {
-        number_1 = "";
-        operator = "";
-        number_2 = ""; 
-
-        input_tete.value = "";
-
-    } else if (number_1 != "" && operator != ""){
-
-        while (re_compt < 1) {
+// CLICK
+buttons.forEach( elements => {
+    elements.addEventListener('click', (e) => {
+        if (number_1 != "" && number_2 != "" && operator != "" && e.target.innerHTML == "=") {
             input_tete.value = "";
+    
+            switch (operator) {
+                case "+":
+                    input_tete.value = parseFloat(number_1) + parseFloat(number_2);
+                    break;
+    
+                case "-":
+                    input_tete.value = parseFloat(number_1) - parseFloat(number_2);
+                    break;
+    
+                case "x":
+                    input_tete.value = parseFloat(number_1) * parseFloat(number_2);
+                    break
+    
+                default:
+                    input_tete.value = parseFloat(number_1) / parseFloat(number_2);
+                    break;
+            }
 
-            re_compt = re_compt + 1
-        }
+            console.log("1");
+    
+        } else if (e.target.innerHTML == "C") {
+            number_1 = "";
+            operator = "";
+            number_2 = ""; 
+    
+            input_tete.value = "";
+            re_compt = 0;
+            console.log("2");
+    
+        } else if (number_1 != "" && operator != "" && (e.target.innerHTML != "+" && e.target.innerHTML != "-" && e.target.innerHTML != "x" && e.target.innerHTML != "/")) {
+            while (re_compt < 1) {
+                input_tete.value = "";
+                re_compt++;
+                console.log("fuck");
+            }
 
-        input_tete.value += e.target.innerHTML;
-        number_2 = input_tete.value;
-
-    } else if (number_1 != "" && (e.target.innerHTML == "+" || e.target.innerHTML == "-" || e.target.innerHTML == "x" || e.target.innerHTML == "/") ) {
-        input_tete.value = "";
-        input_tete.value += e.target.innerHTML;
-        operator = input_tete.value;
-
-    } else{
-        input_tete.value += e.target.innerHTML;
-        number_1 = input_tete.value;
-
-    }        
+            input_tete.value += e.target.innerHTML;
+            number_2 = input_tete.value;
+            console.log("3");
+    
+        } else if (number_1 != "" && (e.target.innerHTML == "+" || e.target.innerHTML == "-" || e.target.innerHTML == "x" || e.target.innerHTML == "/")) {
+            input_tete.value = "";
+            input_tete.value += e.target.innerHTML;
+            operator = input_tete.value;
+            console.log("4");
+            
+        } else {
+            input_tete.value += e.target.innerHTML;
+            number_1 = input_tete.value;
+            console.log("5");
+        }        
+    });
 });
 
 
 // KEY
+
 window.addEventListener('keydown', (e) => {
     if (number_1 != "" && number_2 != "" && operator != "" && e.key == "=") {
         input_tete.value = "";
@@ -113,36 +122,37 @@ window.addEventListener('keydown', (e) => {
                 break;
         }
 
-    } else if (e.key == "C") {
+        console.log("1");
+
+    } else if (e.key == "c") {
         number_1 = "";
         operator = "";
         number_2 = ""; 
 
         input_tete.value = "";
+        re_compt = 0;
+        console.log("2");
 
-    } else if (number_1 != "" && operator != ""){
-
+    } else if (number_1 != "" && operator != "" && (e.key != "+" && e.key != "-" && e.key != "x" && e.key != "/")) {
         while (re_compt < 1) {
             input_tete.value = "";
-
-            re_compt = re_compt + 1
-            console.log(re_compt);
+            re_compt++;
+            console.log("fuck");
         }
 
         input_tete.value += e.key;
         number_2 = input_tete.value;
-        console.log(number_2);
+        console.log("3");
 
-    } else if (number_1 != "" && (e.key == "+" || e.key == "-" || e.key== "x" || e.key== "/") ) {
+    } else if (number_1 != "" && (e.key == "+" || e.key == "-" || e.key == "x" || e.key == "/")) {
         input_tete.value = "";
         input_tete.value += e.key;
         operator = input_tete.value;
-        console.log(operator);
-
+        console.log("4");
+        
     } else {
         input_tete.value += e.key;
         number_1 = input_tete.value;
-
+        console.log("5");
     }        
-        console.log(number_1);
 });
